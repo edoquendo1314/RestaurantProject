@@ -1,0 +1,211 @@
+<% include ../partials/header %>
+<div class="container">
+  <h1><%= restaurant.name %></h1>
+
+  <% if(currentUser && restaurant.author.id.equals(currentUser._id)){ %>
+    <p>
+        <a class= "btn btn-success" href ="/restaurants/<%=restaurant._id%>/breakfasts/new">Add Breakfast Dish</a>
+        <a class= "btn btn-success" href ="/restaurants/<%=restaurant._id%>/lunchs/new">Add Lunch Dish</a>
+        <a class= "btn btn-success" href ="/restaurants/<%=restaurant._id%>/dinners/new">Add Dinner Dish</a>
+        <a class= "btn btn-success" href ="/restaurants/<%=restaurant._id%>/desserts/new">Add Dessert Dish</a>
+        <a class= "btn btn-success" href ="/restaurants/<%=restaurant._id%>/appetizers/new">Add Appetizer Dish</a>
+        <a class= "btn btn-success" href ="/restaurants/<%=restaurant._id%>/drinks/new">Add a Drink</a>
+    </p>
+  <% }%>
+
+  <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+    <div class="caption">
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Breakfast</th>
+                    <th scope="col">Dish</th>
+                    <th scope="col">price</th>
+                    </tr>
+                </thead>
+                <% restaurant.breakfast.forEach(function(breakfast){ %>
+                <tbody>
+                    <tr>
+                    <th scope="col"></th>
+                    <td><%= breakfast.food %></td>
+                    <td><%= breakfast.price %></td>
+                    <td>
+                    <% if(currentUser && restaurant.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-xs btn-warning" href="/restaurants/<%=restaurant._id%>/breakfasts/<%=breakfast._id%>/edit">Edit</a>
+                        <form class="delete-form" action="/restaurants/<%=restaurant._id%>/breakfasts/<%=breakfast._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    <% }%>
+                    </td>
+                    </tr>
+                </tbody>
+                <% }); %>
+        </table>
+    </div>
+  </div>
+  <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+    <div class="caption">
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Lunch</th>
+                    <th scope="col">Dish</th>
+                    <th scope="col">price</th>
+                    </tr>
+                </thead>
+                <% restaurant.lunch.forEach(function(lunch){ %>
+                <tbody>
+                    <tr>
+                    <th scope="col"></th>
+                    <td><%= lunch.food %></td>
+                    <td><%= lunch.price %></td>
+                    <td>
+                    <% if(currentUser && restaurant.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-xs btn-warning" href="/restaurants/<%=restaurant._id%>/lunchs/<%=lunch._id%>/edit">Edit</a>
+                        <form class="delete-form" action="/restaurants/<%=restaurant._id%>/lunchs/<%=lunch._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    <% }%>
+                    </td>
+                    </tr>
+                </tbody>
+                <% }); %>
+        </table>
+    </div>
+  </div>
+
+  <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+    <div class="caption">
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Dinner</th>
+                    <th scope="col">Dish</th>
+                    <th scope="col">price</th>
+                    </tr>
+                </thead>
+                <% restaurant.dinner.forEach(function(dinner){ %>
+                <tbody>
+                    <tr>
+                    <th scope="col"></th>
+                    <td><%= dinner.food %></td>
+                    <td><%= dinner.price %></td>
+                    <td>
+                    <% if(currentUser && restaurant.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-xs btn-warning" href="/restaurants/<%=restaurant._id%>/dinners/<%=dinner._id%>/edit">Edit</a>
+                        <form class="delete-form" action="/restaurants/<%=restaurant._id%>/dinners/<%=dinner._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    <% }%>
+                    </td>
+                    </tr>
+                </tbody>
+                <% }); %>
+        </table>
+    </div>
+  </div>
+
+  <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+    <div class="caption">
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Dessert</th>
+                    <th scope="col">Dish</th>
+                    <th scope="col">price</th>
+                    </tr>
+                </thead>
+                <% restaurant.dessert.forEach(function(dessert){ %>
+                <tbody>
+                    <tr>
+                    <th scope="col"></th>
+                    <td><%= dessert.food %></td>
+                    <td><%= dessert.price %></td>
+                    <td>
+                    <% if(currentUser && restaurant.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-xs btn-warning" href="/restaurants/<%=restaurant._id%>/desserts/<%=dessert._id%>/edit">Edit</a>
+                        <form class="delete-form" action="/restaurants/<%=restaurant._id%>/desserts/<%=dessert._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    <% }%>
+                    </td>
+                    </tr>
+                </tbody>
+                <% }); %>
+        </table>
+    </div>
+  </div>
+
+  <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+    <div class="caption">
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Appetizer</th>
+                    <th scope="col">Dish</th>
+                    <th scope="col">price</th>
+                    </tr>
+                </thead>
+                <% restaurant.appetizer.forEach(function(appetizer){ %>
+                <tbody>
+                    <tr>
+                    <th scope="col"></th>
+                    <td><%= appetizer.food %></td>
+                    <td><%= appetizer.price %></td>
+                    <td>
+                    <% if(currentUser && restaurant.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-xs btn-warning" href="/restaurants/<%=restaurant._id%>/appetizers/<%=appetizer._id%>/edit">Edit</a>
+                        <form class="delete-form" action="/restaurants/<%=restaurant._id%>/appetizers/<%=appetizer._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    <% }%>
+                    </td>
+                    </tr>
+                </tbody>
+                <% }); %>
+        </table>
+    </div>
+  </div>
+
+  <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+    <div class="caption">
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">Drinks</th>
+                    <th scope="col">Beverage</th>
+                    <th scope="col">price</th>
+                    </tr>
+                </thead>
+                <% restaurant.drink.forEach(function(drink){ %>
+                <tbody>
+                    <tr>
+                    <th scope="col"></th>
+                    <td><%= drink.beverage %></td>
+                    <td><%= drink.price %></td>
+                    <td>
+                    <% if(currentUser && restaurant.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-xs btn-warning" href="/restaurants/<%=restaurant._id%>/drinks/<%=drink._id%>/edit">Edit</a>
+                        <form class="delete-form" action="/restaurants/<%=restaurant._id%>/drinks/<%=drink._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                    </tr>
+                    <% }%>
+                    </td>
+                </tbody>
+                <% }); %>
+        </table>
+    </div>
+  </div>
+
+  <% if(currentUser && restaurant.author.id.equals(currentUser._id)){ %>
+    <a class="btn btn-warning"href="/restaurants/<%=restaurant._id%>/edit">Edit</a>
+  <form class="delete-form" action="/restaurants/<%=restaurant._id%>?_method=DELETE" method="POST">
+      <button class="btn btn-danger">Delete</button>
+  </form>
+<% }%>
+  </form>
+
+</div>
+
+<% include ../partials/footer %>

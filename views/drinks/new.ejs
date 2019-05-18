@@ -1,0 +1,12 @@
+<% include ../partials/header %>
+
+<h1>Create new Beverage to <%= restaurant.name %> </h1>
+
+<form action="/restaurants/<%=restaurant._id %>/drinks" method="POST">
+    <input type="text" name="drink[beverage]" placeholder="beverage">
+    <input type="text" name="drink[price]" placeholder="price">
+    <input type="submit"> 
+</form>
+<a href="/restaurants">Go Back</a>
+
+<% include ../partials/footer %>
